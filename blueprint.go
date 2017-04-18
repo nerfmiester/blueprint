@@ -5,11 +5,11 @@ import (
 	"log"
 	"runtime"
 
-	"github.com/blue-jay/blueprint/lib/boot"
-	"github.com/blue-jay/blueprint/lib/env"
+	"github.com/nerfmiester/blue-jay/blueprint/lib/boot"
+	"github.com/nerfmiester/blue-jay/blueprint/lib/env"
 
-	"github.com/blue-jay/core/router"
-	"github.com/blue-jay/core/server"
+	"github.com/nerfmiester/blue-jay/core/router"
+	"github.com/nerfmiester/blue-jay/core/server"
 )
 
 // init sets runtime settings.

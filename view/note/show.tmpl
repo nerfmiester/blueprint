@@ -1,4 +1,4 @@
-{{define "title"}}Item{{end}}
+{{define "title"}}Employee Details{{end}}
 {{define "head"}}{{end}}
 {{define "content"}}
 	<div class="page-header">
@@ -7,7 +7,9 @@
 	
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<p>{{.item.Name}}</p>
+			<p>{{.item.FirstName}}</p>
+			<p>{{.item.MiddleName}}</p>
+			<p>{{.item.LastName}}</p>
 			<span class="pull-right" style="margin-top: 14px;">{{PRETTYTIME .item.CreatedAt .item.UpdatedAt}}</span>
 		</div>
 	</div>

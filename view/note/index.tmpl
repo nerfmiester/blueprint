@@ -1,8 +1,8 @@
-{{define "title"}}Items{{end}}
+{{define "title"}}Employee Details{{end}}
 {{define "head"}}{{end}}
 {{define "content"}}
 	<div class="page-header">
-		<h1>Items</h1>
+		<h1>Employee Details</h1>
 	</div>
 	<p>
 		<a title="Add" class="btn btn-primary" role="button" href="{{$.CurrentURI}}/create">
@@ -13,7 +13,9 @@
 	{{range $n := .items}}
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<p>{{.Name}}</p>
+				<p>{{.FirstName}}</p>
+				<p>{{.MiddleName}}</p>
+				<p>{{.LastName}}</p>
 				<div style="display: inline-block;">
 					<a title="View" class="btn btn-info" role="button" href="{{$.CurrentURI}}/view/{{.ID}}">
 						<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> View

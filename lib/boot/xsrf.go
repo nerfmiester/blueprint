@@ -6,8 +6,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/blue-jay/blueprint/controller/status"
-	"github.com/blue-jay/blueprint/lib/flight"
+	"github.com/nerfmiester/blue-jay/blueprint/controller/status"
+	"github.com/nerfmiester/blue-jay/blueprint/lib/flight"
 	"github.com/gorilla/csrf"
 )
 

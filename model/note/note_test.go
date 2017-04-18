@@ -5,9 +5,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/blue-jay/blueprint/model/note"
-	"github.com/blue-jay/blueprint/model/user"
-	"github.com/blue-jay/core/storage/migration/mysql"
+	"github.com/nerfmiester/blue-jay/blueprint/model/note"
+	"github.com/nerfmiester/blue-jay/blueprint/model/user"
+	"github.com/nerfmiester/blue-jay/core/storage/migration/mysql"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -56,7 +56,7 @@ func TestComplete(t *testing.T) {
 	userID := fmt.Sprintf("%v", uID)
 
 	// Create a record
-	result, err = note.Create(db, data, userID)
+	result, err = note.Create(db, data, "", "", userID)
 	if err != nil {
 		t.Error("could not create record:", err)
 	}
@@ -74,12 +74,12 @@ func TestComplete(t *testing.T) {
 	record, _, err := note.ByID(db, lastID, userID)
 	if err != nil {
 		t.Error("could not retrieve record:", err)
-	} else if record.Name != data {
-		t.Errorf("retrieved wrong record: got '%v' want '%v'", record.Name, data)
+	} else if record.FirstName != data {
+		t.Errorf("retrieved wrong record: got '%v' want '%v'", record.FirstName, data)
 	}
 
 	// Update a record
-	result, err = note.Update(db, dataNew, lastID, userID)
+	result, err = note.Update(db, dataNew, "", "", lastID, userID)
 	if err != nil {
 		t.Error("could not update record:", err)
 	}
@@ -88,8 +88,8 @@ func TestComplete(t *testing.T) {
 	record, _, err = note.ByID(db, lastID, userID)
 	if err != nil {
 		t.Error("could not retrieve record:", err)
-	} else if record.Name != dataNew {
-		t.Errorf("retieved wrong record: got '%v' want '%v'", record.Name, dataNew)
+	} else if record.FirstName != dataNew {
+		t.Errorf("retieved wrong record: got '%v' want '%v'", record.FirstName, dataNew)
 	}
 
 	// Delete a record by ID

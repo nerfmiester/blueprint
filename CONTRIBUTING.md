@@ -15,13 +15,13 @@ discuss.
 
 Please submit issues to the correct repositories:
 
-- [Blueprint](https://github.com/blue-jay/blueprint/issues) - issues
+- [Blueprint](https://github.com/nerfmiester/blue-jay/blueprint/issues) - issues
 related to the Blueprint source code
-- [Jay](https://github.com/blue-jay/jay/issues) - issues related to
+- [Jay](https://github.com/nerfmiester/blue-jay/jay/issues) - issues related to
 the Jay source code
-- [Core](https://github.com/blue-jay/core/issues) - issues related to
+- [Core](https://github.com/nerfmiester/blue-jay/core/issues) - issues related to
 the Core source code
-- [BlueJay Docs](https://github.com/blue-jay/blue-jay.github.io.hugo/issues)
+- [BlueJay Docs](https://github.com/nerfmiester/blue-jay/blue-jay.github.io.hugo/issues)
 - issues related to the BlueJay website or documentation
 
 When submitting a issue, please answer these questions:

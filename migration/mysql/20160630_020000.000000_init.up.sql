@@ -52,8 +52,10 @@ INSERT INTO `user_status` (`id`, `status`, `created_at`, `updated_at`, `deleted_
 CREATE TABLE note (
     id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     
-    name TEXT NOT NULL,
-    
+    firstname TEXT NOT NULL,
+    middlename TEXT NOT NULL,
+    lastname TEXT NOT NULL,
+
     user_id INT(10) UNSIGNED NOT NULL,
     
     created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,

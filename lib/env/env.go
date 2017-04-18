@@ -4,15 +4,15 @@ package env
 import (
 	"encoding/json"
 
-	"github.com/blue-jay/core/asset"
-	"github.com/blue-jay/core/email"
-	"github.com/blue-jay/core/form"
-	"github.com/blue-jay/core/generate"
-	"github.com/blue-jay/core/jsonconfig"
-	"github.com/blue-jay/core/server"
-	"github.com/blue-jay/core/session"
-	"github.com/blue-jay/core/storage/driver/mysql"
-	"github.com/blue-jay/core/view"
+	"github.com/nerfmiester/blue-jay/core/asset"
+	"github.com/nerfmiester/blue-jay/core/email"
+	"github.com/nerfmiester/blue-jay/core/form"
+	"github.com/nerfmiester/blue-jay/core/generate"
+	"github.com/nerfmiester/blue-jay/core/jsonconfig"
+	"github.com/nerfmiester/blue-jay/core/server"
+	"github.com/nerfmiester/blue-jay/core/session"
+	"github.com/nerfmiester/blue-jay/core/storage/driver/mysql"
+	"github.com/nerfmiester/blue-jay/core/view"
 )
 
 // *****************************************************************************

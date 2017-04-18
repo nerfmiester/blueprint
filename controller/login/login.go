@@ -4,15 +4,15 @@ package login
 import (
 	"net/http"
 
-	"github.com/blue-jay/blueprint/lib/flight"
-	"github.com/blue-jay/blueprint/middleware/acl"
-	"github.com/blue-jay/blueprint/model/user"
+	"github.com/nerfmiester/blue-jay/blueprint/lib/flight"
+	"github.com/nerfmiester/blue-jay/blueprint/middleware/acl"
+	"github.com/nerfmiester/blue-jay/blueprint/model/user"
 
-	"github.com/blue-jay/core/flash"
-	"github.com/blue-jay/core/form"
-	"github.com/blue-jay/core/passhash"
-	"github.com/blue-jay/core/router"
-	"github.com/blue-jay/core/session"
+	"github.com/nerfmiester/blue-jay/core/flash"
+	"github.com/nerfmiester/blue-jay/core/form"
+	"github.com/nerfmiester/blue-jay/core/passhash"
+	"github.com/nerfmiester/blue-jay/core/router"
+	"github.com/nerfmiester/blue-jay/core/session"
 )
 
 // Load the routes.

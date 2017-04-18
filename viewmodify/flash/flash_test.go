@@ -6,13 +6,13 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/blue-jay/blueprint/lib/env"
-	"github.com/blue-jay/blueprint/lib/flight"
-	flashmod "github.com/blue-jay/blueprint/viewmodify/flash"
+	"github.com/nerfmiester/blue-jay/blueprint/lib/env"
+	"github.com/nerfmiester/blue-jay/blueprint/lib/flight"
+	flashmod "github.com/nerfmiester/blue-jay/blueprint/viewmodify/flash"
 
-	"github.com/blue-jay/core/flash"
-	"github.com/blue-jay/core/session"
-	"github.com/blue-jay/core/view"
+	"github.com/nerfmiester/blue-jay/core/flash"
+	"github.com/nerfmiester/blue-jay/core/session"
+	"github.com/nerfmiester/blue-jay/core/view"
 
 	"github.com/gorilla/sessions"
 )

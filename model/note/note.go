@@ -15,12 +15,14 @@ var (
 
 // Item defines the model.
 type Item struct {
-	ID        uint32         `db:"id"`
-	Name      string         `db:"name"`
-	UserID    uint32         `db:"user_id"`
-	CreatedAt mysql.NullTime `db:"created_at"`
-	UpdatedAt mysql.NullTime `db:"updated_at"`
-	DeletedAt mysql.NullTime `db:"deleted_at"`
+	ID         uint32         `db:"id"`
+	FirstName  string         `db:"firstname"`
+	MiddleName string         `db:"middlename"`
+	LastName   string         `db:"lastname"`
+	UserID     uint32         `db:"user_id"`
+	CreatedAt  mysql.NullTime `db:"created_at"`
+	UpdatedAt  mysql.NullTime `db:"updated_at"`
+	DeletedAt  mysql.NullTime `db:"deleted_at"`
 }
 
 // Connection is an interface for making queries.
@@ -34,7 +36,7 @@ type Connection interface {
 func ByID(db Connection, ID string, userID string) (Item, bool, error) {
 	result := Item{}
 	err := db.Get(&result, fmt.Sprintf(`
-		SELECT id, name, user_id, created_at, updated_at, deleted_at
+		SELECT id, firstname, middlename, lastname, user_id, created_at, updated_at, deleted_at
 		FROM %v
 		WHERE id = ?
 			AND user_id = ?
@@ -49,7 +51,7 @@ func ByID(db Connection, ID string, userID string) (Item, bool, error) {
 func ByUserID(db Connection, userID string) ([]Item, bool, error) {
 	var result []Item
 	err := db.Select(&result, fmt.Sprintf(`
-		SELECT id, name, user_id, created_at, updated_at, deleted_at
+		SELECT id, firstname, middlename, lastname, user_id, created_at, updated_at, deleted_at
 		FROM %v
 		WHERE user_id = ?
 			AND deleted_at IS NULL
@@ -62,7 +64,7 @@ func ByUserID(db Connection, userID string) ([]Item, bool, error) {
 func ByUserIDPaginate(db Connection, userID string, max int, page int) ([]Item, bool, error) {
 	var result []Item
 	err := db.Select(&result, fmt.Sprintf(`
-		SELECT id, name, user_id, created_at, updated_at, deleted_at
+		SELECT id, firstname, middlename, lastname, user_id, created_at, updated_at, deleted_at
 		FROM %v
 		WHERE user_id = ?
 			AND deleted_at IS NULL
@@ -86,28 +88,30 @@ func ByUserIDCount(db Connection, userID string) (int, error) {
 }
 
 // Create adds an item.
-func Create(db Connection, name string, userID string) (sql.Result, error) {
+func Create(db Connection, firstname string, middlename string, lastname string, userID string) (sql.Result, error) {
 	result, err := db.Exec(fmt.Sprintf(`
 		INSERT INTO %v
-		(name, user_id)
+		(firstname, middlename, lastname,  user_id)
 		VALUES
-		(?,?)
+		(?,?,?,?)
 		`, table),
-		name, userID)
+		firstname, middlename, lastname, userID)
 	return result, err
 }
 
 // Update makes changes to an existing item.
-func Update(db Connection, name string, ID string, userID string) (sql.Result, error) {
+func Update(db Connection, firstname string, middlename string, lastname string, ID string, userID string) (sql.Result, error) {
 	result, err := db.Exec(fmt.Sprintf(`
 		UPDATE %v
-		SET name = ?
+		SET firstname = ?,
+		middlename = ?,
+		lastname  = ?
 		WHERE id = ?
 			AND user_id = ?
 			AND deleted_at IS NULL
 		LIMIT 1
 		`, table),
-		name, ID, userID)
+		firstname, middlename, lastname, ID, userID)
 	return result, err
 }
 

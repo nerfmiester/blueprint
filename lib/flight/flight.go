@@ -7,12 +7,12 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/blue-jay/blueprint/lib/env"
+	"github.com/nerfmiester/blue-jay/blueprint/lib/env"
 
-	"github.com/blue-jay/core/flash"
-	"github.com/blue-jay/core/form"
-	"github.com/blue-jay/core/router"
-	"github.com/blue-jay/core/view"
+	"github.com/nerfmiester/blue-jay/core/flash"
+	"github.com/nerfmiester/blue-jay/core/form"
+	"github.com/nerfmiester/blue-jay/core/router"
+	"github.com/nerfmiester/blue-jay/core/view"
 
 	"github.com/gorilla/sessions"
 	"github.com/jmoiron/sqlx"

@@ -7,8 +7,12 @@
 	
 	<form method="post" action="{{$.CurrentURI}}?_method=patch">
 		<div class="form-group">
-			<label for="name">Item</label>
-			<div><textarea rows="5" class="form-control" id="name" name="name" placeholder="Type your text here..." />{{TEXTAREA "name" .item.Name .}}</textarea></div>
+			<label for="firstname">First Name</label>
+			<div><textarea rows="1" class="form-control" id="firstname" name="firstname" placeholder="Type your first name here..." />{{TEXTAREA "firstname" .item.FirstName .}}</textarea></div>
+			<label for="middlename">Middle Name</label>
+			<div><textarea rows="1" class="form-control" id="middlename" name="middlename" placeholder="Type your middle name here..." />{{TEXTAREA "middlename" .item.MiddleName .}}</textarea></div>
+			<label for="lastname">Last Name</label>
+			<div><textarea rows="1" class="form-control" id="lastname" name="lastname" placeholder="Type your last name here..." />{{TEXTAREA "lastname" .item.LastName .}}</textarea></div>
 		</div>
 		
 		<button type="submit" class="btn btn-success" title="Save" />

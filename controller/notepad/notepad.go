@@ -4,12 +4,12 @@ package notepad
 import (
 	"net/http"
 
-	"github.com/blue-jay/blueprint/lib/flight"
-	"github.com/blue-jay/blueprint/middleware/acl"
-	"github.com/blue-jay/blueprint/model/note"
+	"github.com/nerfmiester/blue-jay/blueprint/lib/flight"
+	"github.com/nerfmiester/blue-jay/blueprint/middleware/acl"
+	"github.com/nerfmiester/blue-jay/blueprint/model/note"
 
-	"github.com/blue-jay/core/pagination"
-	"github.com/blue-jay/core/router"
+	"github.com/nerfmiester/blue-jay/core/pagination"
+	"github.com/nerfmiester/blue-jay/core/router"
 )
 
 var (
@@ -60,7 +60,7 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	c := flight.Context(w, r)
 
 	v := c.View.New("note/create")
-	c.Repopulate(v.Vars, "name")
+	c.Repopulate(v.Vars, "firstname", "middlename", "lastname")
 	v.Render(w, r)
 }
 
@@ -68,12 +68,12 @@ func Create(w http.ResponseWriter, r *http.Request) {
 func Store(w http.ResponseWriter, r *http.Request) {
 	c := flight.Context(w, r)
 
-	if !c.FormValid("name") {
+	if !c.FormValid("firstname") && !c.FormValid("lastname") {
 		Create(w, r)
 		return
 	}
 
-	_, err := note.Create(c.DB, r.FormValue("name"), c.UserID)
+	_, err := note.Create(c.DB, r.FormValue("firstname"), r.FormValue("middlename"), r.FormValue("lastname"), c.UserID)
 	if err != nil {
 		c.FlashErrorGeneric(err)
 		Create(w, r)
@@ -112,7 +112,8 @@ func Edit(w http.ResponseWriter, r *http.Request) {
 	}
 
 	v := c.View.New("note/edit")
-	c.Repopulate(v.Vars, "name")
+	c.Repopulate(v.Vars, "firstname", "middlename", "lastname")
+	//c.Repopulate(v.Vars, "name")
 	v.Vars["item"] = item
 	v.Render(w, r)
 }
@@ -120,13 +121,18 @@ func Edit(w http.ResponseWriter, r *http.Request) {
 // Update handles the edit form submission.
 func Update(w http.ResponseWriter, r *http.Request) {
 	c := flight.Context(w, r)
+	//
+	//if !c.FormValid("name") {
+	//	Edit(w, r)
+	//	return
+	//}
 
-	if !c.FormValid("name") {
-		Edit(w, r)
+	if !c.FormValid("firstname") && !c.FormValid("lastname") {
+		Create(w, r)
 		return
 	}
 
-	_, err := note.Update(c.DB, r.FormValue("name"), c.Param("id"), c.UserID)
+	_, err := note.Update(c.DB, r.FormValue("firstname"), r.FormValue("middlename"), r.FormValue("lastname"), c.Param("id"), c.UserID)
 	if err != nil {
 		c.FlashErrorGeneric(err)
 		Edit(w, r)

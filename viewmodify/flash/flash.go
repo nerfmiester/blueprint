@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/blue-jay/blueprint/lib/flight"
+	"github.com/nerfmiester/blue-jay/blueprint/lib/flight"
 
-	flashlib "github.com/blue-jay/core/flash"
-	"github.com/blue-jay/core/view"
+	flashlib "github.com/nerfmiester/blue-jay/core/flash"
+	"github.com/nerfmiester/blue-jay/core/view"
 )
 
 // Modify adds the flashes to the view.
