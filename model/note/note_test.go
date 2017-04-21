@@ -56,7 +56,7 @@ func TestComplete(t *testing.T) {
 	userID := fmt.Sprintf("%v", uID)
 
 	// Create a record
-	result, err = note.Create(db, data, "", "", userID)
+	result, err = note.Create(db, data, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", userID)
 	if err != nil {
 		t.Error("could not create record:", err)
 	}
@@ -79,7 +79,7 @@ func TestComplete(t *testing.T) {
 	}
 
 	// Update a record
-	result, err = note.Update(db, dataNew, "", "", lastID, userID)
+	result, err = note.Update(db, dataNew, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", lastID, userID)
 	if err != nil {
 		t.Error("could not update record:", err)
 	}
