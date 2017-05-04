@@ -8,6 +8,8 @@
 	<form method="post" action="{{$.CurrentURI}}">
 		<div class="form-group">
 			<h2>Personal Information</h2>
+			<label for="futureuse4">Employee Number</label>
+			<div><textarea rows="1" class="form-control" id="futureuse4" name="futureuse4" placeholder="Type your Employee Number here.." />{{TEXTAREA "futureuse4" .item.FutureUse4 .}}</textarea></div>
 			<label for="firstname">First Name</label>
 			<div><textarea rows="1" class="form-control" id="firstname" name="firstname" placeholder="Type your first name here..." />{{TEXTAREA "firstname" .item.FirstName .}}</textarea></div>
 			<label for="middlename">Middle Name</label>
@@ -72,7 +74,7 @@
 			<label for="ec1addressline2">Address Line 2 (if applicable)</label>
 			<div><textarea rows="1" class="form-control" id="ec1addressline2" name="ec1addressline2" placeholder="Type your Emergency Contact 1 Address Line 2 here..." />{{TEXTAREA "ec1addressline2" .item.Ec1AddressLine2 .}}</textarea></div>
 			<label for="ec1apartmentsuite">Apartment Suite (if applicable)</label>
-			<div><textarea rows="1" class="form-control" id="ec1apartmentsuite" name="ec1apartmentsuite" placeholder="Type your Emergency Contact 1 Appartment Suite here..." />{{TEXTAREA "ec1apartmentsuite" .item.Ec1AppartmentSuite .}}</textarea></div>
+			<div><textarea rows="1" class="form-control" id="ec1apartmentsuite" name="ec1apartmentsuite" placeholder="Type your Emergency Contact 1 Appartment Suite here..." />{{TEXTAREA "ec1apartmentsuite" .item.Ec1ApartmentSuite .}}</textarea></div>
 			<label for="ec1town">Town</label>
 			<div><textarea rows="1" class="form-control" id="ec1town" name="ec1town" placeholder="Type your Emergency Contact 1 Town here..." />{{TEXTAREA "ec1town" .item.Ec1Town .}}</textarea></div>
 			<label for="ec1county">County</label>
@@ -97,7 +99,7 @@
 			<label for="ec2addressline2">Address Line 2 (if applicable)</label>
 			<div><textarea rows="1" class="form-control" id="ec2addressline2" name="ec2addressline2" placeholder="Type your Emergency Contact 2 Address Line 2 here..." />{{TEXTAREA "ec2addressline2" .item.Ec2AddressLine2 .}}</textarea></div>
 			<label for="ec2apartmentsuite">Apartment Suite (if applicable)</label>
-			<div><textarea rows="1" class="form-control" id="ec2apartmentsuite" name="ec2apartmentsuite" placeholder="Type your Emergency Contact 2 Appartment Suite here..." />{{TEXTAREA "ec2apartmentsuite" .item.Ec2AppartmentSuite .}}</textarea></div>
+			<div><textarea rows="1" class="form-control" id="ec2apartmentsuite" name="ec2apartmentsuite" placeholder="Type your Emergency Contact 2 Appartment Suite here..." />{{TEXTAREA "ec2apartmentsuite" .item.Ec2ApartmentSuite .}}</textarea></div>
 			<label for="ec2town">Town</label>
 			<div><textarea rows="1" class="form-control" id="ec2town" name="ec2town" placeholder="Type your Emergency Contact 2 Town here..." />{{TEXTAREA "ec2town" .item.Ec2Town .}}</textarea></div>
 			<label for="ec2county">County</label>
@@ -122,7 +124,7 @@
 			<label for="ec3addressline2">Address Line 2 (if applicable)</label>
 			<div><textarea rows="1" class="form-control" id="ec3addressline2" name="ec3addressline2" placeholder="Type your Emergency Contact 3Address Line 2 here..." />{{TEXTAREA "ec3addressline2" .item.Ec3AddressLine2 .}}</textarea></div>
 			<label for="ec3apartmentsuite">Apartment Suite (if applicable)</label>
-			<div><textarea rows="1" class="form-control" id="ec3apartmentsuite" name="ec3apartmentsuite" placeholder="Type your Emergency Contact 3 Appartment Suite here..." />{{TEXTAREA "ec3apartmentsuite" .item.Ec3AppartmentSuite .}}</textarea></div>
+			<div><textarea rows="1" class="form-control" id="ec3apartmentsuite" name="ec3apartmentsuite" placeholder="Type your Emergency Contact 3 Appartment Suite here..." />{{TEXTAREA "ec3apartmentsuite" .item.Ec3ApartmentSuite .}}</textarea></div>
 			<label for="ec3town">Town</label>
 			<div><textarea rows="1" class="form-control" id="ec3town" name="ec3town" placeholder="Type your Emergency Contact 3 Town here..." />{{TEXTAREA "ec3town" .item.Ec3Town .}}</textarea></div>
 			<label for="ec3county">County</label>

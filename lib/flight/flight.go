@@ -14,6 +14,8 @@ import (
 	"github.com/nerfmiester/blue-jay/core/router"
 	"github.com/nerfmiester/blue-jay/core/view"
 
+	"strconv"
+
 	"github.com/gorilla/sessions"
 	"github.com/jmoiron/sqlx"
 )
@@ -105,6 +107,28 @@ func (c *Info) FormValid(fields ...string) bool {
 		c.Sess.AddFlash(flash.Info{"Field missing: " + missingField, flash.Warning})
 		c.Sess.Save(c.R, c.W)
 		return false
+	}
+
+	return true
+}
+
+// FormValid determines if the user submitted all the required fields and then
+// saves an error flash. Returns true if form is valid.
+func (c *Info) FormAllNums(fields ...string) bool {
+	for _, v := range fields {
+		if len(v) > 6 {
+			fmt.Printf("Lengthg of %v is -->%v<--", v, len(v))
+			c.Sess.AddFlash(flash.Info{"Length invalid : length must be 6 or less, entered value is " + strconv.Itoa(len(v)), flash.Warning})
+			c.Sess.Save(c.R, c.W)
+			return false
+		}
+
+		if _, err := strconv.Atoi(v); err != nil {
+			c.Sess.AddFlash(flash.Info{"Invalid Entry: Entry must be 6 numerics, entered value is not numeric only " + v, flash.Warning})
+			c.Sess.Save(c.R, c.W)
+			return false
+		}
+
 	}
 
 	return true

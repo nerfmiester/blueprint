@@ -8,6 +8,8 @@
 	<form method="post" action="{{$.CurrentURI}}?_method=patch">
 		<div class="form-group">
 			<h2>Personal Information</h2>
+			<label for="futureuse4">Employee Number</label>
+			<div><textarea rows="1" class="form-control" id="futureuse4" name="futureuse4" placeholder="Type your Employee Number here.." />{{TEXTAREA "futureuse4" .item.FutureUse4 .}}</textarea></div>
 			<label for="firstname">First Name</label>
 			<div><textarea rows="1" class="form-control" id="firstname" name="firstname" placeholder="Type your first name here..." />{{TEXTAREA "firstname" .item.FirstName .}}</textarea></div>
 			<label for="middlename">Middle Name</label>

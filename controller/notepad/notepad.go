@@ -68,7 +68,7 @@ func Create(w http.ResponseWriter, r *http.Request) {
 func Store(w http.ResponseWriter, r *http.Request) {
 	c := flight.Context(w, r)
 
-	if !c.FormValid("firstname") && !c.FormValid("lastname") {
+	if !c.FormValid("firstname") && !c.FormValid("lastname") && !c.FormAllNums(r.FormValue("futureuse4")) {
 		Create(w, r)
 		return
 	}
