@@ -37,6 +37,14 @@ type Item struct {
 	NokFirstName       string         `db:"nokfirstname"`
 	NokLastName        string         `db:"noklastname"`
 	NokRelationship    string         `db:"nokrelationship"`
+	NokAddressLine1    string         `db:"nokaddressline1"`
+	NokHouseNameNumber string         `db:"nokhousenamenumber"`
+	NokAddressLine2    string         `db:"nokaddressline2"`
+	NokApartmentSuite  string         `db:"nokapartmentsuite"`
+	NokTown            string         `db:"noktown"`
+	NokCounty          string         `db:"nokcounty"`
+	NokPostCode        string         `db:"nokpostcode"`
+	NokCountry         string         `db:"nokcountry"`
 	NokHomePhone       string         `db:"nokhomephone"`
 	NokWorkPhone       string         `db:"nokworkphone"`
 	Ec1Title           string         `db:"ec1title"`
@@ -51,6 +59,8 @@ type Item struct {
 	Ec1County          string         `db:"ec1county"`
 	Ec1PostCode        string         `db:"ec1postcode"`
 	Ec1Country         string         `db:"ec1country"`
+	Ec1HomePhone       string         `db:"ec1homephone"`
+	Ec1WorkPhone       string         `db:"ec1workphone"`
 	Ec2Title           string         `db:"ec2title"`
 	Ec2FirstName       string         `db:"ec2firstname"`
 	Ec2LastName        string         `db:"ec2lastname"`
@@ -63,6 +73,8 @@ type Item struct {
 	Ec2County          string         `db:"ec2county"`
 	Ec2PostCode        string         `db:"ec2postcode"`
 	Ec2Country         string         `db:"ec2country"`
+	Ec2HomePhone       string         `db:"ec2homephone"`
+	Ec2WorkPhone       string         `db:"ec2workphone"`
 	Ec3Title           string         `db:"ec3title"`
 	Ec3FirstName       string         `db:"ec3firstname"`
 	Ec3LastName        string         `db:"ec3lastname"`
@@ -75,6 +87,8 @@ type Item struct {
 	Ec3County          string         `db:"ec3county"`
 	Ec3PostCode        string         `db:"ec3postcode"`
 	Ec3Country         string         `db:"ec3country"`
+	Ec3HomePhone       string         `db:"ec3homephone"`
+	Ec3WorkPhone       string         `db:"ec3workphone"`
 	FutureUse1         string         `db:"futureuse1"`
 	FutureUse2         string         `db:"futureuse2"`
 	FutureUse3         string         `db:"futureuse3"`
@@ -96,7 +110,7 @@ type Connection interface {
 func ByID(db Connection, ID string, userID string) (Item, bool, error) {
 	result := Item{}
 	err := db.Get(&result, fmt.Sprintf(`
-		SELECT id, firstname, middlename, lastname, manager, personalemail, businessemail, homephone, mobilephone, workphone, addressline1, housenamenumber, addressline2, apartmentsuite, town, county, postcode, country, noktitle, nokfirstname, noklastname, nokrelationship, nokhomephone, nokworkphone, ec1title, ec1firstname, ec1lastname, ec1relationship, ec1addressline1, ec1housenamenumber, ec1addressline2, ec1apartmentsuite, ec1town, ec1county, ec1postcode, ec1country, ec2title, ec2firstname, ec2lastname, ec2relationship, ec2addressline1, ec2housenamenumber, ec2addressline2, ec2apartmentsuite, ec2town, ec2county, ec2postcode, ec2country, ec3title, ec3firstname, ec3lastname, ec3relationship, ec3addressline1, ec3housenamenumber, ec3addressline2, ec3apartmentsuite, ec3town, ec3county, ec3postcode, ec3country, futureuse1, futureuse2, futureuse3, futureuse4, user_id, created_at, updated_at, deleted_at
+		SELECT id, firstname, middlename, lastname, manager, personalemail, businessemail, homephone, mobilephone, workphone, addressline1, housenamenumber, addressline2, apartmentsuite, town, county, postcode, country, noktitle, nokfirstname, noklastname, nokrelationship, nokaddressline1,nokhousenamenumber, nokaddressline2,nokapartmentsuite,noktown,nokcounty,	nokpostcode,	nokcountry,nokhomephone, nokworkphone, ec1title, ec1firstname, ec1lastname, ec1relationship, ec1addressline1, ec1housenamenumber, ec1addressline2, ec1apartmentsuite, ec1town, ec1county, ec1postcode, ec1country, ec1homephone,ec1workphone,ec2title, ec2firstname, ec2lastname, ec2relationship, ec2addressline1, ec2housenamenumber, ec2addressline2, ec2apartmentsuite, ec2town, ec2county, ec2postcode, ec2country, ec2homephone,ec2workphone,ec3title, ec3firstname, ec3lastname, ec3relationship, ec3addressline1, ec3housenamenumber, ec3addressline2, ec3apartmentsuite, ec3town, ec3county, ec3postcode, ec3country, ec3homephone,ec3workphone,futureuse1, futureuse2, futureuse3, futureuse4, user_id, created_at, updated_at, deleted_at
 		FROM %v
 		WHERE id = ?
 			AND user_id = ?
@@ -111,7 +125,7 @@ func ByID(db Connection, ID string, userID string) (Item, bool, error) {
 func ByUserID(db Connection, userID string) ([]Item, bool, error) {
 	var result []Item
 	err := db.Select(&result, fmt.Sprintf(`
-		SELECT id, firstname, middlename, lastname, manager, personalemail, businessemail, homephone, mobilephone, workphone, addressline1, housenamenumber, addressline2, apartmentsuite, town, county, postcode, country, noktitle, nokfirstname, noklastname, nokrelationship, nokhomephone, nokworkphone, ec1title, ec1firstname, ec1lastname, ec1relationship, ec1addressline1, ec1housenamenumber, ec1addressline2, ec1apartmentsuite, ec1town, ec1county, ec1postcode, ec1country, ec2title, ec2firstname, ec2lastname, ec2relationship, ec2addressline1, ec2housenamenumber, ec2addressline2, ec2apartmentsuite, ec2town, ec2county, ec2postcode, ec2country, ec3title, ec3firstname, ec3lastname, ec3relationship, ec3addressline1, ec3housenamenumber, ec3addressline2, ec3apartmentsuite, ec3town, ec3county, ec3postcode, ec3country, futureuse1, futureuse2, futureuse3, futureuse4, user_id, created_at, updated_at, deleted_at
+		SELECT id, firstname, middlename, lastname, manager, personalemail, businessemail, homephone, mobilephone, workphone, addressline1, housenamenumber, addressline2, apartmentsuite, town, county, postcode, country, noktitle, nokfirstname, noklastname, nokrelationship, nokaddressline1,nokhousenamenumber, nokaddressline2,nokapartmentsuite,noktown,nokcounty,	nokpostcode,	nokcountry,nokhomephone, nokworkphone, ec1title, ec1firstname, ec1lastname, ec1relationship, ec1addressline1, ec1housenamenumber, ec1addressline2, ec1apartmentsuite, ec1town, ec1county, ec1postcode, ec1country,ec1homephone,ec1workphone, ec2title, ec2firstname, ec2lastname, ec2relationship, ec2addressline1, ec2housenamenumber, ec2addressline2, ec2apartmentsuite, ec2town, ec2county, ec2postcode, ec2country, ec2homephone,ec2workphone,ec3title, ec3firstname, ec3lastname, ec3relationship, ec3addressline1, ec3housenamenumber, ec3addressline2, ec3apartmentsuite, ec3town, ec3county, ec3postcode, ec3country, ec3homephone,ec3workphone,futureuse1, futureuse2, futureuse3, futureuse4, user_id, created_at, updated_at, deleted_at
 		FROM %v
 		WHERE user_id = ?
 			AND deleted_at IS NULL
@@ -124,7 +138,7 @@ func ByUserID(db Connection, userID string) ([]Item, bool, error) {
 func ByUserIDPaginate(db Connection, userID string, max int, page int) ([]Item, bool, error) {
 	var result []Item
 	err := db.Select(&result, fmt.Sprintf(`
-		SELECT id, firstname, middlename, lastname, manager, personalemail, businessemail, homephone, mobilephone, workphone, addressline1, housenamenumber, addressline2, apartmentsuite, town, county, postcode, country, noktitle, nokfirstname, noklastname, nokrelationship, nokhomephone, nokworkphone, ec1title, ec1firstname, ec1lastname, ec1relationship, ec1addressline1, ec1housenamenumber, ec1addressline2, ec1apartmentsuite, ec1town, ec1county, ec1postcode, ec1country, ec2title, ec2firstname, ec2lastname, ec2relationship, ec2addressline1, ec2housenamenumber, ec2addressline2, ec2apartmentsuite, ec2town, ec2county, ec2postcode, ec2country, ec3title, ec3firstname, ec3lastname, ec3relationship, ec3addressline1, ec3housenamenumber, ec3addressline2, ec3apartmentsuite, ec3town, ec3county, ec3postcode, ec3country, futureuse1, futureuse2, futureuse3, futureuse4, user_id, created_at, updated_at, deleted_at
+		SELECT id, firstname, middlename, lastname, manager, personalemail, businessemail, homephone, mobilephone, workphone, addressline1, housenamenumber, addressline2, apartmentsuite, town, county, postcode, country, noktitle, nokfirstname, noklastname, nokrelationship, nokaddressline1,nokhousenamenumber, nokaddressline2,nokapartmentsuite,noktown,nokcounty,	nokpostcode,	nokcountry,nokhomephone, nokworkphone, ec1title, ec1firstname, ec1lastname, ec1relationship, ec1addressline1, ec1housenamenumber, ec1addressline2, ec1apartmentsuite, ec1town, ec1county, ec1postcode, ec1country, ec1homephone,ec1workphone,ec2title, ec2firstname, ec2lastname, ec2relationship, ec2addressline1, ec2housenamenumber, ec2addressline2, ec2apartmentsuite, ec2town, ec2county, ec2postcode, ec2country, ec2homephone,ec2workphone,ec3title, ec3firstname, ec3lastname, ec3relationship, ec3addressline1, ec3housenamenumber, ec3addressline2, ec3apartmentsuite, ec3town, ec3county, ec3postcode, ec3country, ec3homephone,ec3workphone, futureuse1, futureuse2, futureuse3, futureuse4, user_id, created_at, updated_at, deleted_at
 		FROM %v
 		WHERE user_id = ?
 			AND deleted_at IS NULL
@@ -148,19 +162,19 @@ func ByUserIDCount(db Connection, userID string) (int, error) {
 }
 
 // Create adds an item.
-func Create(db Connection, firstname string, middlename string, lastname string, manager string, personalemail string, businessemail string, homephone string, mobilephone string, workphone string, addressline1 string, housenamenumber string, addressline2 string, apartmentsuite string, town string, county string, postcode string, country string, noktitle string, nokfirstname string, noklastname string, nokrelationship string, nokhomephone string, nokworkphone string, ec1title string, ec1firstname string, ec1lastname string, ec1relationship string, ec1addressline1 string, ec1housenamenumber string, ec1addressline2 string, ec1apartmentsuite string, ec1town string, ec1county string, ec1postcode string, ec1country string, ec2title string, ec2firstname string, ec2lastname string, ec2relationship string, ec2addressline1 string, ec2housenamenumber string, ec2addressline2 string, ec2apartmentsuite string, ec2town string, ec2county string, ec2postcode string, ec2country string, ec3title string, ec3firstname string, ec3lastname string, ec3relationship string, ec3addressline1 string, ec3housenamenumber string, ec3addressline2 string, ec3apartmentsuite string, ec3town string, ec3county string, ec3postcode string, ec3country string, futureuse1 string, futureuse2 string, futureuse3 string, futureuse4 string, userID string) (sql.Result, error) {
+func Create(db Connection, firstname string, middlename string, lastname string, manager string, personalemail string, businessemail string, homephone string, mobilephone string, workphone string, addressline1 string, housenamenumber string, addressline2 string, apartmentsuite string, town string, county string, postcode string, country string, noktitle string, nokfirstname string, noklastname string, nokrelationship string, nokaddressline1 string, nokhousenamenumber string, nokaddressline2 string, nokapartmentsuite string, noktown string, nokcounty string, nokpostcode string, nokcountry string, nokhomephone string, nokworkphone string, ec1title string, ec1firstname string, ec1lastname string, ec1relationship string, ec1addressline1 string, ec1housenamenumber string, ec1addressline2 string, ec1apartmentsuite string, ec1town string, ec1county string, ec1postcode string, ec1country string, ec1homephone string, ec1workphone string, ec2title string, ec2firstname string, ec2lastname string, ec2relationship string, ec2addressline1 string, ec2housenamenumber string, ec2addressline2 string, ec2apartmentsuite string, ec2town string, ec2county string, ec2postcode string, ec2country string, ec2homephone string, ec2workphone string, ec3title string, ec3firstname string, ec3lastname string, ec3relationship string, ec3addressline1 string, ec3housenamenumber string, ec3addressline2 string, ec3apartmentsuite string, ec3town string, ec3county string, ec3postcode string, ec3country string, ec3homephone string, ec3workphone string, futureuse1 string, futureuse2 string, futureuse3 string, futureuse4 string, userID string) (sql.Result, error) {
 	result, err := db.Exec(fmt.Sprintf(`
 		INSERT INTO %v
-		(firstname, middlename, lastname, manager, personalemail, businessemail, homephone, mobilephone, workphone, addressline1, housenamenumber, addressline2, apartmentsuite, town, county, postcode, country, noktitle, nokfirstname, noklastname, nokrelationship, nokhomephone, nokworkphone, ec1title, ec1firstname, ec1lastname, ec1relationship, ec1addressline1, ec1housenamenumber, ec1addressline2, ec1apartmentsuite, ec1town, ec1county, ec1postcode, ec1country, ec2title, ec2firstname, ec2lastname, ec2relationship, ec2addressline1, ec2housenamenumber, ec2addressline2, ec2apartmentsuite, ec2town, ec2county, ec2postcode, ec2country, ec3title, ec3firstname, ec3lastname, ec3relationship, ec3addressline1, ec3housenamenumber, ec3addressline2, ec3apartmentsuite, ec3town, ec3county, ec3postcode, ec3country, futureuse1, futureuse2, futureuse3, futureuse4, user_id)
+		(firstname, middlename, lastname, manager, personalemail, businessemail, homephone, mobilephone, workphone, addressline1, housenamenumber, addressline2, apartmentsuite, town, county, postcode, country, noktitle, nokfirstname, noklastname, nokrelationship, nokaddressline1,nokhousenamenumber, nokaddressline2,nokapartmentsuite,noktown,nokcounty,	nokpostcode,	nokcountry,nokhomephone, nokworkphone, ec1title, ec1firstname, ec1lastname, ec1relationship, ec1addressline1, ec1housenamenumber, ec1addressline2, ec1apartmentsuite, ec1town, ec1county, ec1postcode, ec1country, ec1homephone,ec1workphone,ec2title, ec2firstname, ec2lastname, ec2relationship, ec2addressline1, ec2housenamenumber, ec2addressline2, ec2apartmentsuite, ec2town, ec2county, ec2postcode, ec2country, ec2homephone,ec2workphone,ec3title, ec3firstname, ec3lastname, ec3relationship, ec3addressline1, ec3housenamenumber, ec3addressline2, ec3apartmentsuite, ec3town, ec3county, ec3postcode, ec3country, ec3homephone,ec3workphone,futureuse1, futureuse2, futureuse3, futureuse4, user_id)
 		VALUES
-		(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+		(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
 		`, table),
-		firstname, middlename, lastname, manager, personalemail, businessemail, homephone, mobilephone, workphone, addressline1, housenamenumber, addressline2, apartmentsuite, town, county, postcode, country, noktitle, nokfirstname, noklastname, nokrelationship, nokhomephone, nokworkphone, ec1title, ec1firstname, ec1lastname, ec1relationship, ec1addressline1, ec1housenamenumber, ec1addressline2, ec1apartmentsuite, ec1town, ec1county, ec1postcode, ec1country, ec2title, ec2firstname, ec2lastname, ec2relationship, ec2addressline1, ec2housenamenumber, ec2addressline2, ec2apartmentsuite, ec2town, ec2county, ec2postcode, ec2country, ec3title, ec3firstname, ec3lastname, ec3relationship, ec3addressline1, ec3housenamenumber, ec3addressline2, ec3apartmentsuite, ec3town, ec3county, ec3postcode, ec3country, futureuse1, futureuse2, futureuse3, futureuse4, userID)
+		firstname, middlename, lastname, manager, personalemail, businessemail, homephone, mobilephone, workphone, addressline1, housenamenumber, addressline2, apartmentsuite, town, county, postcode, country, noktitle, nokfirstname, noklastname, nokrelationship, nokaddressline1, nokhousenamenumber, nokaddressline2, nokapartmentsuite, noktown, nokcounty, nokpostcode, nokcountry, nokhomephone, nokworkphone, ec1title, ec1firstname, ec1lastname, ec1relationship, ec1addressline1, ec1housenamenumber, ec1addressline2, ec1apartmentsuite, ec1town, ec1county, ec1postcode, ec1country, ec1homephone, ec1workphone, ec2title, ec2firstname, ec2lastname, ec2relationship, ec2addressline1, ec2housenamenumber, ec2addressline2, ec2apartmentsuite, ec2town, ec2county, ec2postcode, ec2country, ec2homephone, ec2workphone, ec3title, ec3firstname, ec3lastname, ec3relationship, ec3addressline1, ec3housenamenumber, ec3addressline2, ec3apartmentsuite, ec3town, ec3county, ec3postcode, ec3country, ec3homephone, ec3workphone, futureuse1, futureuse2, futureuse3, futureuse4, userID)
 	return result, err
 }
 
 // Update makes changes to an existing item.
-func Update(db Connection, firstname string, middlename string, lastname string, manager string, personalemail string, businessemail string, homephone string, mobilephone string, workphone string, addressline1 string, housenamenumber string, addressline2 string, apartmentsuite string, town string, county string, postcode string, country string, noktitle string, nokfirstname string, noklastname string, nokrelationship string, nokhomephone string, nokworkphone string, ec1title string, ec1firstname string, ec1lastname string, ec1relationship string, ec1addressline1 string, ec1housenamenumber string, ec1addressline2 string, ec1apartmentsuite string, ec1town string, ec1county string, ec1postcode string, ec1country string, ec2title string, ec2firstname string, ec2lastname string, ec2relationship string, ec2addressline1 string, ec2housenamenumber string, ec2addressline2 string, ec2apartmentsuite string, ec2town string, ec2county string, ec2postcode string, ec2country string, ec3title string, ec3firstname string, ec3lastname string, ec3relationship string, ec3addressline1 string, ec3housenamenumber string, ec3addressline2 string, ec3apartmentsuite string, ec3town string, ec3county string, ec3postcode string, ec3country string, futureuse1 string, futureuse2 string, futureuse3 string, futureuse4 string, ID string, userID string) (sql.Result, error) {
+func Update(db Connection, firstname string, middlename string, lastname string, manager string, personalemail string, businessemail string, homephone string, mobilephone string, workphone string, addressline1 string, housenamenumber string, addressline2 string, apartmentsuite string, town string, county string, postcode string, country string, noktitle string, nokfirstname string, noklastname string, nokrelationship string, nokaddressline1 string, nokhousenamenumber string, nokaddressline2 string, nokapartmentsuite string, noktown string, nokcounty string, nokpostcode string, nokcountry string, nokhomephone string, nokworkphone string, ec1title string, ec1firstname string, ec1lastname string, ec1relationship string, ec1addressline1 string, ec1housenamenumber string, ec1addressline2 string, ec1apartmentsuite string, ec1town string, ec1county string, ec1postcode string, ec1country string, ec1homephone string, ec1workphone string, ec2title string, ec2firstname string, ec2lastname string, ec2relationship string, ec2addressline1 string, ec2housenamenumber string, ec2addressline2 string, ec2apartmentsuite string, ec2town string, ec2county string, ec2postcode string, ec2country string, ec2homephone string, ec2workphone string, ec3title string, ec3firstname string, ec3lastname string, ec3relationship string, ec3addressline1 string, ec3housenamenumber string, ec3addressline2 string, ec3apartmentsuite string, ec3town string, ec3county string, ec3postcode string, ec3country string, ec3homephone string, ec3workphone string, futureuse1 string, futureuse2 string, futureuse3 string, futureuse4 string, ID string, userID string) (sql.Result, error) {
 	result, err := db.Exec(fmt.Sprintf(`
 		UPDATE %v
 		SET firstname = ?,
@@ -184,6 +198,14 @@ func Update(db Connection, firstname string, middlename string, lastname string,
 		nokfirstname = ?,
 		noklastname = ?,
 		nokrelationship = ?,
+		nokaddressline1  = ?,
+		nokhousenamenumber  = ?,
+		nokaddressline2 = ?,
+		nokapartmentsuite = ?,
+		noktown = ?,
+		nokcounty = ?,
+		nokpostcode = ?,
+		nokcountry = ?,
 		nokhomephone = ?,
 		nokworkphone = ?,
 		ec1title = ?,
@@ -198,6 +220,8 @@ func Update(db Connection, firstname string, middlename string, lastname string,
 		ec1county = ?,
 		ec1postcode = ?,
 		ec1country = ?,
+		ec1homephone = ?,
+		ec1workphone = ?,
 		ec2title = ?,
 		ec2firstname = ?,
 		ec2lastname = ?,
@@ -210,6 +234,8 @@ func Update(db Connection, firstname string, middlename string, lastname string,
 		ec2county = ?,
 		ec2postcode = ?,
 		ec2country = ?,
+		ec2homephone  = ?,
+		ec2workphone  = ?,
 		ec3title = ?,
 		ec3firstname = ?,
 		ec3lastname = ?,
@@ -222,6 +248,8 @@ func Update(db Connection, firstname string, middlename string, lastname string,
 		ec3county = ?,
 		ec3postcode = ?,
 		ec3country = ?,
+		ec3homephone  = ?,
+		ec3workphone  = ?,
 		futureuse1 = ?,
 		futureuse2 = ?,
 		futureuse3 = ?,
@@ -231,7 +259,7 @@ func Update(db Connection, firstname string, middlename string, lastname string,
 			AND deleted_at IS NULL
 		LIMIT 1
 		`, table),
-		firstname, middlename, lastname, manager, personalemail, businessemail, homephone, mobilephone, workphone, addressline1, housenamenumber, addressline2, apartmentsuite, town, county, postcode, country, noktitle, nokfirstname, noklastname, nokrelationship, nokhomephone, nokworkphone, ec1title, ec1firstname, ec1lastname, ec1relationship, ec1addressline1, ec1housenamenumber, ec1addressline2, ec1apartmentsuite, ec1town, ec1county, ec1postcode, ec1country, ec2title, ec2firstname, ec2lastname, ec2relationship, ec2addressline1, ec2housenamenumber, ec2addressline2, ec2apartmentsuite, ec2town, ec2county, ec2postcode, ec2country, ec3title, ec3firstname, ec3lastname, ec3relationship, ec3addressline1, ec3housenamenumber, ec3addressline2, ec3apartmentsuite, ec3town, ec3county, ec3postcode, ec3country, futureuse1, futureuse2, futureuse3, futureuse4, ID, userID)
+		firstname, middlename, lastname, manager, personalemail, businessemail, homephone, mobilephone, workphone, addressline1, housenamenumber, addressline2, apartmentsuite, town, county, postcode, country, noktitle, nokfirstname, noklastname, nokrelationship, nokaddressline1, nokhousenamenumber, nokaddressline2, nokapartmentsuite, noktown, nokcounty, nokpostcode, nokcountry, nokhomephone, nokworkphone, ec1title, ec1firstname, ec1lastname, ec1relationship, ec1addressline1, ec1housenamenumber, ec1addressline2, ec1apartmentsuite, ec1town, ec1county, ec1postcode, ec1country, ec1homephone, ec1workphone, ec2title, ec2firstname, ec2lastname, ec2relationship, ec2addressline1, ec2housenamenumber, ec2addressline2, ec2apartmentsuite, ec2town, ec2county, ec2postcode, ec2country, ec2homephone, ec2workphone,ec3title, ec3firstname, ec3lastname, ec3relationship, ec3addressline1, ec3housenamenumber, ec3addressline2, ec3apartmentsuite, ec3town, ec3county, ec3postcode, ec3country, ec1homephone, ec1workphone, futureuse1, futureuse2, futureuse3, futureuse4, ID, userID)
 	return result, err
 }
 
